@@ -7,7 +7,9 @@ const STATIC_FILES_TO_CACHE = [
     '/styles.css',
     '/manifest.webmanifest',
     '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png'
+    '/icons/icon-512x512.png',
+    '/db.js',
+    '/index.js'
 ];
 
 self.addEventListener('install', evt => {
@@ -36,16 +38,14 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
-    console.log('event object:', evt.request);
+
     if (evt.request.url.includes('/api/')) {
         evt.respondWith(
             caches.open(API_DATA_CACHE_NAME)
             .then(cache => {
-                console.log('cache:', cache);
                 return fetch(evt.request)
                     .then(res => {
                         if (res.status === 200) {
-                            console.log('response object:', res);
                             cache.put(evt.request.url, res.clone())
                         }
 
@@ -56,7 +56,7 @@ self.addEventListener('fetch', evt => {
                         return caches.match(evt.request);
                     });
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log('respondWith promise', err))
         )
         return
     }
