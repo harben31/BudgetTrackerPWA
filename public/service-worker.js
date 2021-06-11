@@ -38,13 +38,14 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
-
-    if (evt.request.url.includes('/api/')) {
+    // console.log(evt.request);
+    if (evt.request.url.includes('/api/') && evt.request.method === 'GET') {
         evt.respondWith(
             caches.open(API_DATA_CACHE_NAME)
             .then(cache => {
                 return fetch(evt.request)
                     .then(res => {
+                        console.log('cache:', cache);
                         if (res.status === 200) {
                             cache.put(evt.request.url, res.clone())
                         }
@@ -59,7 +60,7 @@ self.addEventListener('fetch', evt => {
             .catch(err => console.log('respondWith promise', err))
         )
         return
-    }
+    } 
 
     evt.respondWith(
         caches.open(STATIC_CACHE_NAME).then(cache => {
