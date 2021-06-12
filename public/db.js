@@ -66,7 +66,7 @@ request.onsuccess = evt => {
 };
 
 const saveRecord = rec => {
-    console.log('save record envoked');
+    console.log('save record invoked');
 
     const transaction = db.transaction(['BudgetStore'], 'readwrite');
     const store = transaction.objectStore('BudgetStore');

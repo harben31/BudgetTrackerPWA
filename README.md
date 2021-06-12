@@ -1,6 +1,6 @@
 # Budget Tracker
 Table of Contents:
-* [Contributors:](#Contributtors)
+* [Contributors:](#Contributors)
 * [Description](#Description)
 * [Technology_Used](#Technology_Used)
 * [Usage](#Usage)
@@ -25,7 +25,7 @@ An app to track users budget
 
 
 ## Usage:
-The user can add an amount and description into the inputs and choose to either add to or remove from their budget. Both the total anount and the visual chart will keep up with the users transactions to represent their money left and change over time. Once the app has been connected to once it will continue to work offline and will sync up with the database once it comes back online.
+The user can add an amount and description into the inputs and choose to either add to or remove from their budget. Both the total amount and the visual chart will keep up with the users transactions to represent their money left and change over time. Once the app has been connected to once it will continue to work offline and will sync up with the database once it comes back online.
 
 ## License-Info:
 None
